@@ -1,0 +1,50 @@
+{
+    "error": false,
+    "message": "Successfully",
+    "status_code": 200,
+    "data": [
+        {
+            "id": "a123b456-7c8d-9e0f-1g2h-3i4j5k6l7m8n",
+            "user_id_input": "3b01d8d4-4c6b-456c-bb2d-f1a9a1c2b945",
+            "nomor_kendaraan": "B 1234 XYZ",
+            "seat": 7,
+            "merek": "Toyota",
+            "nomor_rangka": "JT123ABC456DEF789",
+            "nomor_mesin": "1NZXY123456",
+            "created_at": "2023-01-01T10:00:00",
+            "updated_at": "2023-01-01T10:00:00",
+            "deleted_at": null
+        },
+        {
+            "id": "b234c567-8d9e-0f1g-2h3i-4j5k6l7m8n9o",
+            "user_id_input": "4c6d7e8f-2a3b-4c5d-9e7f-bd7a2f1e3c6d",
+            "nomor_kendaraan": "D 5678 ABC",
+            "seat": 4,
+            "merek": "Honda",
+            "nomor_rangka": "MH1ZYX789DEF456ABC",
+            "nomor_mesin": "2KXEF789012",
+            "created_at": "2023-02-01T11:00:00",
+            "updated_at": "2023-02-01T11:00:00",
+            "deleted_at": null
+        },
+        {
+            "id": "c345d678-9e0f-1g2h-3i4j-5k6l7m8n9o0p",
+            "user_id_input": "5d8e9f0a-3b2c-4d5e-9a7b-c8d7e6f1a2b3",
+            "nomor_kendaraan": "F 9101 DEF",
+            "seat": 12,
+            "merek": "Isuzu",
+            "nomor_rangka": "ISZ123QWE456RTY789",
+            "nomor_mesin": "3LZQR123789",
+            "created_at": "2023-03-01T12:00:00",
+            "updated_at": "2023-03-01T12:00:00",
+            "deleted_at": null
+        }
+    ],
+    "pagination": {
+        "total": 34,
+        "count": 10,
+        "per_page": 10,
+        "current_page": 1,
+        "total_pages": 4
+    }
+}

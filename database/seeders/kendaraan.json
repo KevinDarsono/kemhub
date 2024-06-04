@@ -1,0 +1,901 @@
+[{
+        "nomor_kendaraan": "AD9014OD",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFL8JNIGJB10529",
+        "nomor_mesin": "J08EUGJ53505"
+    },
+    {
+        "nomor_kendaraan": "B9543UIW",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJESG8JE1GJE10210",
+        "nomor_mesin": "J08EUFJ74404"
+    },
+    {
+        "nomor_kendaraan": "DB8665CY",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 0,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFL1JNP6JA12244",
+        "nomor_mesin": "J08CFJ14642"
+    },
+    {
+        "nomor_kendaraan": "B9327TFA",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHHGKZ30CHK802112",
+        "nomor_mesin": "GH8443514A1P"
+    },
+    {
+        "nomor_kendaraan": "B9762JB",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFN517L6R000371",
+        "nomor_mesin": "6D160-B9313"
+    },
+    {
+        "nomor_kendaraan": "W8977NO",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHKP3BA1JEK092266",
+        "nomor_mesin": "MF55731"
+    },
+    {
+        "nomor_kendaraan": "AB7059KN",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 38,
+        "merek": "ferrari",
+        "nomor_rangka": "MEC0054EMKP54365364362",
+        "nomor_mesin": "78896857456346534"
+    },
+    {
+        "nomor_kendaraan": "B9517TFU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFE84P8GK010024",
+        "nomor_mesin": "4D34TPY1672"
+    },
+    {
+        "nomor_kendaraan": "DB8965CY",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFL8JNKAJG-14639",
+        "nomor_mesin": "J08EUGJ-22107"
+    },
+    {
+        "nomor_kendaraan": "W9298UG",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFG8JPKBJG18628",
+        "nomor_mesin": "J08EUGJ23263"
+    },
+    {
+        "nomor_kendaraan": "B7246PGA",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 33,
+        "merek": "ferrari",
+        "nomor_rangka": "MHL368100EJ000684",
+        "nomor_mesin": "906998U1040611"
+    },
+    {
+        "nomor_kendaraan": "E9453F",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEC1JG43D5094639",
+        "nomor_mesin": "W04DTRJ91277"
+    },
+    {
+        "nomor_kendaraan": "B7046ZAA",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 15,
+        "merek": "ferrari",
+        "nomor_rangka": "JTFSS22P2K",
+        "nomor_mesin": "2KD B"
+    },
+    {
+        "nomor_kendaraan": "B7001ZGA",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 60,
+        "merek": "ferrari",
+        "nomor_rangka": "MJERK8JSKDJN15591",
+        "nomor_mesin": "J08EUFJ52039"
+    },
+    {
+        "nomor_kendaraan": "B9096JXR",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 0,
+        "merek": "ferrari",
+        "nomor_rangka": "MHCNKR55HFJ066739",
+        "nomor_mesin": "MO66739"
+    },
+    {
+        "nomor_kendaraan": "B7797TGA",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 57,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEAK8JRKDJF-13472",
+        "nomor_mesin": "J08EUHJ-13664"
+    },
+    {
+        "nomor_kendaraan": "B9722BFU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHFC1JU41C5058418",
+        "nomor_mesin": "W04DTPJ30192"
+    },
+    {
+        "nomor_kendaraan": "S7012UJ",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 30,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFE84PBDJ005754",
+        "nomor_mesin": "4D34TJX1534"
+    },
+    {
+        "nomor_kendaraan": "E7698VA",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 34,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFB2WGLGJE14452",
+        "nomor_mesin": "WD4DTNJ84462"
+    },
+    {
+        "nomor_kendaraan": "BP9511DU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 0,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFG8JSKEJG12297",
+        "nomor_mesin": "J08EUGJ39529"
+    },
+    {
+        "nomor_kendaraan": "B9013SFV",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFL8JN1HJB10855",
+        "nomor_mesin": "J08EUGJ58949"
+    },
+    {
+        "nomor_kendaraan": "E7719V",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 28,
+        "merek": "ferrari",
+        "nomor_rangka": "FE349E003125",
+        "nomor_mesin": "4D34973125"
+    },
+    {
+        "nomor_kendaraan": "BM8343TU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHCFVZ34PHJ004175",
+        "nomor_mesin": "6HK1F005664"
+    },
+    {
+        "nomor_kendaraan": "KT8610LW",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFM8JWKEJM44917",
+        "nomor_mesin": "J08EUFJ68959"
+    },
+    {
+        "nomor_kendaraan": "B9598BFU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHCFRR901FJ001298",
+        "nomor_mesin": "4HK1239104"
+    },
+    {
+        "nomor_kendaraan": "AB7018CD",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 38,
+        "merek": "ferrari",
+        "nomor_rangka": "MJERK8JSK7JM-10188",
+        "nomor_mesin": "J08EUGJ-11077"
+    },
+    {
+        "nomor_kendaraan": "BK8153CF",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFN517C9K000564",
+        "nomor_mesin": "6D16-E16223"
+    },
+    {
+        "nomor_kendaraan": "BG1622VC",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFE84PBBJ003680",
+        "nomor_mesin": "4D34TG09182"
+    },
+    {
+        "nomor_kendaraan": "B7264KAA",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 30,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFE84PBCJ004125",
+        "nomor_mesin": "4D34TH42031"
+    },
+    {
+        "nomor_kendaraan": "DB8667CY",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 0,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFL1JNP6JA12245",
+        "nomor_mesin": "J08CFJ14643"
+    },
+    {
+        "nomor_kendaraan": "T9186DL",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHCNK71LYCJ039521",
+        "nomor_mesin": "B039521"
+    },
+    {
+        "nomor_kendaraan": "B7120UGA",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 60,
+        "merek": "ferrari",
+        "nomor_rangka": "MJERK8JSKFJN17504",
+        "nomor_mesin": "J08EUFJ72060"
+    },
+    {
+        "nomor_kendaraan": "B9334FEU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFL8JW1GJB10",
+        "nomor_mesin": "J08EUGJ52234"
+    },
+    {
+        "nomor_kendaraan": "AA1941DF",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHFC1JU43C5058624",
+        "nomor_mesin": "W04DTRJ61021"
+    },
+    {
+        "nomor_kendaraan": "F9496FD",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFM8JNMDJM10114",
+        "nomor_mesin": "J08EVTJ10210"
+    },
+    {
+        "nomor_kendaraan": "F7540SD",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 54,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEAK8JRKAJF12484",
+        "nomor_mesin": "J08EUHJ12544"
+    },
+    {
+        "nomor_kendaraan": "W9821L",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFL8JWLDJM15004",
+        "nomor_mesin": "J08EUFJ50778"
+    },
+    {
+        "nomor_kendaraan": "B9278TEI",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFG8JE1FJB10053",
+        "nomor_mesin": "J08EUGJ48565"
+    },
+    {
+        "nomor_kendaraan": "S7450UJ",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 60,
+        "merek": "ferrari",
+        "nomor_rangka": "MHL368100JJ001412",
+        "nomor_mesin": "906998U1228119"
+    },
+    {
+        "nomor_kendaraan": "B9819TEV",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFL8JW1JJB15638",
+        "nomor_mesin": "J08EUGJ62296"
+    },
+    {
+        "nomor_kendaraan": "B9094YU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFE349E6R094296",
+        "nomor_mesin": "4D34B58567"
+    },
+    {
+        "nomor_kendaraan": "S8427UT",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHPKC211H3K000049",
+        "nomor_mesin": "FE6084840BY"
+    },
+    {
+        "nomor_kendaraan": "D9688AE",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFE84P8FKOO77184",
+        "nomor_mesin": "4D34TKY1024"
+    },
+    {
+        "nomor_kendaraan": "H7174OD",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 20,
+        "merek": "ferrari",
+        "nomor_rangka": "MHCNLR55HNJ093204",
+        "nomor_mesin": "M093204"
+    },
+    {
+        "nomor_kendaraan": "R1600BR",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 51,
+        "merek": "ferrari",
+        "nomor_rangka": "MJERK8JSKKJN21688",
+        "nomor_mesin": "J08EUFR00501"
+    },
+    {
+        "nomor_kendaraan": "B7324VGA",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 34,
+        "merek": "ferrari",
+        "nomor_rangka": "MJERK8JSKJJN21445",
+        "nomor_mesin": "J08EUFJ95126"
+    },
+    {
+        "nomor_kendaraan": "H1446BW",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 54,
+        "merek": "ferrari",
+        "nomor_rangka": "MJERL8JSKJJN21631",
+        "nomor_mesin": "JO9EUFJ97931"
+    },
+    {
+        "nomor_kendaraan": "B9022PFU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFM8JNKAJM22132",
+        "nomor_mesin": "J08EUFJ26090"
+    },
+    {
+        "nomor_kendaraan": "G1600CD",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 59,
+        "merek": "ferrari",
+        "nomor_rangka": "MJERK8JSKHJN20345",
+        "nomor_mesin": "J08EUFJ87645"
+    },
+    {
+        "nomor_kendaraan": "L9195UM",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 0,
+        "merek": "ferrari",
+        "nomor_rangka": "MHCFVZ34PDJ002142",
+        "nomor_mesin": "6HK1648557"
+    },
+    {
+        "nomor_kendaraan": "BM9334QU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEC1JG43H5150325",
+        "nomor_mesin": "W04DTRR42876"
+    },
+    {
+        "nomor_kendaraan": "BA7502EU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 16,
+        "merek": "ferrari",
+        "nomor_rangka": "MHCNH55EYAJ031540",
+        "nomor_mesin": "M031540"
+    },
+    {
+        "nomor_kendaraan": "E7625PB",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 60,
+        "merek": "ferrari",
+        "nomor_rangka": "MJERK8JSKHJN20284",
+        "nomor_mesin": "J08EUFJ87074"
+    },
+    {
+        "nomor_kendaraan": "B7817TAA",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 20,
+        "merek": "ferrari",
+        "nomor_rangka": "MHCNLR55HJJ081324",
+        "nomor_mesin": "M081324"
+    },
+    {
+        "nomor_kendaraan": "BA7524EU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 15,
+        "merek": "ferrari",
+        "nomor_rangka": "MHCNK55EYDJ048219",
+        "nomor_mesin": "M048219"
+    },
+    {
+        "nomor_kendaraan": "E9275MB",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHKP3BA13DK066201",
+        "nomor_mesin": "MC66411"
+    },
+    {
+        "nomor_kendaraan": "B9753X",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "FU416U540601",
+        "nomor_mesin": "8DC10405504"
+    },
+    {
+        "nomor_kendaraan": "W7351US",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 50,
+        "merek": "ferrari",
+        "nomor_rangka": "MJERK8JSKGJN19291",
+        "nomor_mesin": "J08EUFJ77645"
+    },
+    {
+        "nomor_kendaraan": "B9610TFU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEC1JG43J5165902",
+        "nomor_mesin": "W04DTRR56288"
+    },
+    {
+        "nomor_kendaraan": "B9042JEU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFN527G5R000068",
+        "nomor_mesin": "6D16EDA40146"
+    },
+    {
+        "nomor_kendaraan": "BK9777MP",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFE84P8JK014633",
+        "nomor_mesin": "4D34TS08781"
+    },
+    {
+        "nomor_kendaraan": "DK7817AC",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 30,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFE84PBCJ004172",
+        "nomor_mesin": "4D34TH49569"
+    },
+    {
+        "nomor_kendaraan": "B9015CEA",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFM8JKAEJM15779",
+        "nomor_mesin": "J08EUFJ62035"
+    },
+    {
+        "nomor_kendaraan": "K1817ES",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFE74P5HK167814",
+        "nomor_mesin": "4D34TR28957"
+    },
+    {
+        "nomor_kendaraan": "W9734A",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 0,
+        "merek": "ferrari",
+        "nomor_rangka": "MHPPK260CEK00043",
+        "nomor_mesin": "FE6130212CY"
+    },
+    {
+        "nomor_kendaraan": "R7081OE",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 20,
+        "merek": "ferrari",
+        "nomor_rangka": "MHCNLR55HJJ077968",
+        "nomor_mesin": "M077968"
+    },
+    {
+        "nomor_kendaraan": "B9231FYW",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFG8JLKBJG19531",
+        "nomor_mesin": "J08EUGJ24820"
+    },
+    {
+        "nomor_kendaraan": "B9644YU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFN527F5R000560",
+        "nomor_mesin": "6D16EDA80325"
+    },
+    {
+        "nomor_kendaraan": "BH8284YU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFM8JKADJM15239",
+        "nomor_mesin": "J08EUFJ58713"
+    },
+    {
+        "nomor_kendaraan": "AG9252UR",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHML0PU39GK192392",
+        "nomor_mesin": "4D56CP24184"
+    },
+    {
+        "nomor_kendaraan": "AD7434OF",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 42,
+        "merek": "ferrari",
+        "nomor_rangka": "YV3T2T425NA208110",
+        "nomor_mesin": "D112034400"
+    },
+    {
+        "nomor_kendaraan": "B9544SYM",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFE74P48KO22471",
+        "nomor_mesin": "4D34T-DX3719"
+    },
+    {
+        "nomor_kendaraan": "A9022ML",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMU5TU2E8K020511",
+        "nomor_mesin": "4G15D02960"
+    },
+    {
+        "nomor_kendaraan": "BM7487JU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 48,
+        "merek": "ferrari",
+        "nomor_rangka": "MHL368006HJ003791",
+        "nomor_mesin": "906998U1204826"
+    },
+    {
+        "nomor_kendaraan": "B7025ZAA",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "JTFSS22P7J0172592",
+        "nomor_mesin": "2KDA961630"
+    },
+    {
+        "nomor_kendaraan": "S7445UN",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 40,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFC9JNKKJB10391",
+        "nomor_mesin": "J05EUP10496"
+    },
+    {
+        "nomor_kendaraan": "E9243AC",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 0,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEC1JG43H5158828",
+        "nomor_mesin": "WO4DTRR49324"
+    },
+    {
+        "nomor_kendaraan": "KB8114SG",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFE74P5KK205612",
+        "nomor_mesin": "4D34TT41771"
+    },
+    {
+        "nomor_kendaraan": "DK7421FA",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 16,
+        "merek": "ferrari",
+        "nomor_rangka": "JTFSS22P1D0128527",
+        "nomor_mesin": "2KDA218786"
+    },
+    {
+        "nomor_kendaraan": "B9844CU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 0,
+        "merek": "ferrari",
+        "nomor_rangka": "MHFC1BU4340007698",
+        "nomor_mesin": "14B1746515"
+    },
+    {
+        "nomor_kendaraan": "L8792UC",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFL8JWKDJG21151",
+        "nomor_mesin": "J08EUGJ40783"
+    },
+    {
+        "nomor_kendaraan": "B9052KXS",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHCNKR55HHJ074245",
+        "nomor_mesin": "M074245"
+    },
+    {
+        "nomor_kendaraan": "KT8541MU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFE  74 P5HK170923",
+        "nomor_mesin": "4D34T-L60087"
+    },
+    {
+        "nomor_kendaraan": "K1688DE",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 50,
+        "merek": "ferrari",
+        "nomor_rangka": "MJERN8JSPJJS10058",
+        "nomor_mesin": "J08EVTJ11444"
+    },
+    {
+        "nomor_kendaraan": "D7575JH",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 48,
+        "merek": "ferrari",
+        "nomor_rangka": "MHL368100KJ001602",
+        "nomor_mesin": "906998U1249451"
+    },
+    {
+        "nomor_kendaraan": "B9485UEL",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJESG8JDKDJL15260",
+        "nomor_mesin": "J08EUFJ57016"
+    },
+    {
+        "nomor_kendaraan": "DK7946AE",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "JTFSS22PXE0138023",
+        "nomor_mesin": "2KDA636193"
+    },
+    {
+        "nomor_kendaraan": "B7408TAA",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 20,
+        "merek": "ferrari",
+        "nomor_rangka": "MHCNKR55HGJ068801",
+        "nomor_mesin": "M068801"
+    },
+    {
+        "nomor_kendaraan": "K1686BF",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 30,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFE84PBBJ003442",
+        "nomor_mesin": "4D34T-G80448"
+    },
+    {
+        "nomor_kendaraan": "B9183ZI",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 0,
+        "merek": "ferrari",
+        "nomor_rangka": "MHMFE334E2RO17112",
+        "nomor_mesin": "4D31-287635"
+    },
+    {
+        "nomor_kendaraan": "BG8554TB",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFG8JJKEJG17696",
+        "nomor_mesin": "J08EUGJ-465"
+    },
+    {
+        "nomor_kendaraan": "A9216TZ",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFM8JWKCJM37183",
+        "nomor_mesin": "JO8EUFJ48999"
+    },
+    {
+        "nomor_kendaraan": "H1678GG",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 30,
+        "merek": "ferrari",
+        "nomor_rangka": "MHCN1R71LGJ073770",
+        "nomor_mesin": "B073770"
+    },
+    {
+        "nomor_kendaraan": "B9075SEH",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHPPK260CBK000674",
+        "nomor_mesin": "FE6125168CY"
+    },
+    {
+        "nomor_kendaraan": "BK8134MP",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MEC2161CDEP006569",
+        "nomor_mesin": "400950D0006800"
+    },
+    {
+        "nomor_kendaraan": "B9426IV",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MHCNK71LY6J003752",
+        "nomor_mesin": "B03752"
+    },
+    {
+        "nomor_kendaraan": "BM7551JU",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 50,
+        "merek": "ferrari",
+        "nomor_rangka": "MHL368100HJ001350",
+        "nomor_mesin": "906998U1214423"
+    },
+    {
+        "nomor_kendaraan": "A7504RM",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 59,
+        "merek": "ferrari",
+        "nomor_rangka": "MJERK8JSKFJN17711",
+        "nomor_mesin": "J08EUFJ72621"
+    },
+    {
+        "nomor_kendaraan": "F9606FF",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFL8JW1JJE14581",
+        "nomor_mesin": "JO8EUFJ91563"
+    },
+    {
+        "nomor_kendaraan": "BG8191ID",
+        "provinsi_id": "11",
+        "kota_id": "1101",
+        "seat": 10,
+        "merek": "ferrari",
+        "nomor_rangka": "MJEFM8JN1JJE21482",
+        "nomor_mesin": "J08EUFJ94485"
+    }
+]

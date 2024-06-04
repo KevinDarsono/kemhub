@@ -1,0 +1,15 @@
+[
+    {
+      "id": 1,
+      "name": "Kecamatan",
+      "province_id": 35,
+      "city_id": 3501,
+      "administrative_code": null,
+      "latitude": null,
+      "longitude": null,
+      "description": null,
+      "created_at": null,
+      "updated_at": null,
+      "deleted_at": null
+    }
+  ]
