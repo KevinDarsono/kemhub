@@ -72,6 +72,7 @@ class CrudController extends Controller
             ], HttpStatusCodes::HTTP_BAD_REQUEST);
         }
 
+        // $data = $this->service->getDetailByID($request->id);
         $data = $this->service->getDetailByID($request->id);
 
         return response()->json([

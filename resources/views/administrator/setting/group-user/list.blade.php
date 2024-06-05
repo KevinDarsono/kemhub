@@ -185,7 +185,6 @@
                     search: search
                 }
             ).then(function(response) {
-                console.log(response);
                 return response;
             }).catch(function(error) {
                 loadingPage(false);
@@ -211,6 +210,7 @@
 
                 for (let index = 0; index < data.length; index++) {
                     let element = data[index];
+
                     // Hanya tampilkan baris untuk user_id yang belum ditampilkan
                     if (!displayedUserIds.has(element.user.id)) {
                         appendHtml += `
@@ -219,7 +219,7 @@
                         <td>${element.user.name_role ? element.user.name_role : '-'}</td>
 
                         <td>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end" data-id="${element.id}">
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end" data-id="${element.user_id}">
                                 <button class="btn btn-info btn-sm me-md-2 detail-data" type="button" title="Detail">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
@@ -348,11 +348,11 @@
                     loadingPage(false); // Hide loading indicator
                     let resp = error.response;
                     notificationAlert('info', 'Pemberitahuan', resp.data
-                    .message); // Show error notification
+                        .message); // Show error notification
                     return resp;
                 });
 
-                if (getDataRest.status == 200) {
+                if (getDataRest.data.status_code == 200) {
                     loadingPage(false); // Hide loading indicator
                     $("form").find("input, select, textarea").val("").prop("checked", false).trigger(
                         "change"); // Reset form
@@ -362,38 +362,35 @@
 
                     let data = getDataRest.data.data;
 
-                    console.log(data); // Log data for debugging (optional)
-
                     let domHtml = `
                 <tr>
                   <th>User Input</th>
-                  <td>: ${data.user.name_role ? data.user.name_role : '-'}</td>
+
                 </tr>`;
 
-                    $("#tableDetail").html(domHtml); // Set user input details
-
-                    // Create an empty array to store processed user IDs
+                    $("#tableDetail").html(domHtml);
                     let processedUserIds = [];
 
                     let listData = "";
+                    console.log(data);
                     for (let i = 0; i < data.length; i++) {
                         let element = data[i];
 
-                        // Check if user ID has already been processed
-                        if (!processedUserIds.includes(element.user.id)) {
+                        // if (!processedUserIds.includes(element.user.id)) {
                             listData += `
-            <tr>
-              <td>${element.parent_user.name_role ? element.parent_user.name_role : '-'}</td>
-              <td>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end" data-id="${element.user.id}">
-                  <button class="btn btn-danger btn-sm delete-data" type="button" title="Hapus">
-                    <i class="fa-solid fa-trash"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>`;
+                            <tr>
+                                <td>${i + 1}.</td>
+                                <td> ${element.parent_user.name_role ? element.parent_user.name_role : '-'}</td>
+                                <td>
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end" data-id="${element.user.id}">
+                                        <button class="btn btn-danger btn-sm delete-data" type="button" title="Hapus">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>`;
                             processedUserIds.push(element.user.id); // Add processed user ID to the array
-                        }
+                        // }
                     }
 
                     $("#tableDetailList tbody").html(listData); // Set list data with unique user IDs
