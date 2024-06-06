@@ -16,13 +16,13 @@ return new class extends Migration
     //     });
     // }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::table('kendaraan_angkutan', function (Blueprint $table) {
-            $table->renameColumn('user_id_input', 'user_id');
-        });
-    }
+    // /**
+    //  * Reverse the migrations.
+    //  */
+    // public function down(): void
+    // {
+    //     Schema::table('kendaraan_angkutan', function (Blueprint $table) {
+    //         $table->renameColumn('user_id_input', 'user_id');
+    //     });
+    // }
 };

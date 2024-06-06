@@ -51,7 +51,7 @@
                 <thead>
                     <tr class="tb-head">
                         <th>No</th>
-                        <th>User</th>
+                        <th>Ketua Grup</th>
                         <th class="text-end">Aksi</th>
                     </tr>
                 </thead>
@@ -73,67 +73,58 @@
 @endsection
 
 @section('modal')
+    {{-- Form Data --}}
     <form id="form-data">
         <div class="modal fade" id="modalData" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="modalDataLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="modalDataLabel">Form Group User</h1>
+                    <div class="modal-header bg-primary ">
+                        <h5 class="modal-title text-white" id="modalDataLabel"></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <input type="hidden" name="user_id" id="inputId" />
                         <div class="row">
-                            <div class="col-md-6 form-control">
-                                <label for="">
-                                    User
-                                    <small class="text-danger">
-                                        *
-                                    </small>
-                                </label>
-                                <select class="form-control" name="id" id="input_user_id"></select>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="input_user_id" class="form-label">Pemimpin Grup <span class="text-danger">*</span></label>
+                                    <select class="form-select" name="id" id="input_user_id"></select>
+                                </div>
                             </div>
-                            <div class="col-md-6 form-control">
-                                <label for="">
-                                    Parent User
-                                    <small class="text-danger">
-                                        *
-                                    </small>
-                                </label>
-                                <select class="form-control" name="parent_user_id[]" id="input_parent_user_id"
-                                    multiple></select>
+                            <div class="col-md-10">
+                                <div class="mb-3">
+                                    <label for="input_parent_user_id" class="form-label">Anggota Grup <span class="text-danger">*</span></label>
+                                    <select class="form-select" name="parent_user_id[]" id="input_parent_user_id"></select>
+                                </div>
                             </div>
-                            <div class="table-responsive" id="tableEdit">
-                                <table class="table table-hover table-striped" style="width: 100%" id="tableEditList">
-                                    <thead>
-                                        <tr class="tb-head">
-                                            <th>No</th>
-                                            <th>User</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody></tbody>
-                                </table>
+                            <div class="col-md-2">
+                                <div class="mt-4 d-grid">
+                                    <button type="button" class="btn btn-success btn-md add-approver" id="parent-user-"><i class="fa fa-plus"></i></button>
+                                </div>
                             </div>
-
-                            {{-- <label for="">Parent User <sup>
-                                    <font color="red">*</font>
-                                </sup></label>
-                            <div class="mb-2">
-                                <input type="text" name="parent_user_id" id="input_parent_user_id" class="form-control"
-                                    placeholder="Enter Role Name" />
-                                <button type="button" id="add_parent_user" class="btn btn-primary mt-2">Add</button>
-                            </div> --}}
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="table-responsive mt-4" id="tableEdit">
+                            <table class="table table-hover table-striped" id="tableEditList">
+                                <thead>
+                                    <tr class="bg-primary text-white">
+                                        <th scope="col">No</th>
+                                        <th scope="col">User</th>
+                                        <th scope="col">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
                         </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </div>
+        </div>
     </form>
-
 
     <!-- Modal Detail -->
     <div class="modal fade" id="modalDetail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -146,11 +137,11 @@
                 </div>
                 <div class="modal-body">
                     <div class="table-responsive">
-                        <table class="table table-hover table-striped" style="width: 100%" id="tableDetailList">
+                        <table class="table table-hover table-striped"  style="width: 100%" id="tableDetailList">
                             <thead>
-                                <tr class="tb-head">
+                                <tr class="tb-head ">
                                     <th>No</th>
-                                    <th>User</th>
+                                    <th>Anggota Grup</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -169,12 +160,12 @@
     <script src="{{ asset('assets/js/paginationjs/pagination.min.js') }}"></script>
     <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
     <script src="{{ asset('assets/js/select2/select2.min.js') }}"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 @endsection
 
 
 @section('page_js')
+
     <script>
         let modalTitle = "";
         let isActionForm = "create";
@@ -231,10 +222,6 @@
                     // Only display rows for user_ids that haven't been displayed yet
                     if (!displayedUserIds.has(element.user.id)) {
                         appendHtml +=
-                            // delete button on list
-                            // <button class="btn btn-danger btn-sm delete-data" type="button" title="Hapus" data-id="${element.id}">
-                            //     <i class="fa-solid fa-trash"></i>
-                            // </button>
                             `
                             <tr>
                                 <td>${index_loop}</td>
@@ -242,35 +229,29 @@
                                 <td>
                                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                         <button class="btn btn-info btn-sm me-md-2 detail-data" type="button" title="Detail" data-id="${element.user_id}">
-                                            <i class="fa-solid fa-eye"></i>
+                                            <i class="fa-solid fa-eye"> Detail Grup</i>
                                         </button>
                                         <button class="btn btn-warning btn-sm me-md-2 edit-data" type="button" title="Ubah" data-id="${element.user_id}">
-                                            <i class="fa-solid fa-pen"></i>
+                                            <i class="fa-solid fa-pen"> Edit Grup</i>
                                         </button>
-
-
                                     </div>
                                 </td>
                             </tr>`;
-                        // Add user_id to the set of displayed user_ids
                         displayedUserIds.add(element.user.id);
                         index_loop++;
                     }
                 }
-
                 if (totalUniqueUsers == 0) {
                     appendHtml = `
-            <tr>
-                <th class="text-center" colspan="${$('.tb-head th').length}"> Tidak ada data. </th>
-            </tr>
-            `;
+                         <tr>
+                             <th class="text-center" colspan="${$('.tb-head th').length}"> Tidak ada data. </th>
+                         </tr>
+                    `;
                     $('#countPage').text("0 - 0");
                 }
                 $('#tableData tbody').html(appendHtml);
             }
         }
-
-
         // Action
         function addData() {
             $(document).on("click", "#add-data", function() {
@@ -281,6 +262,9 @@
                 $(".modal-title").html(modalTitle);
                 $("#modalData").modal("show");
                 $("#tableEdit").hide();
+
+                $('input_user_id').prop('readonly', false);
+                $('input_user_id').prop('disable', false);
 
             });
         }
@@ -380,6 +364,8 @@
                         let input_user_id = new Option(editData.user.name_role, editData.user.id,
                             true, true);
                         $("#input_user_id").append(input_user_id).trigger('change');
+                        $('#input_user_id').prop('readonly', true); // Set as read-only
+                        $('#input_user_id').prop('disabled', true);
                         let row = `
                     <tr>
                         <td>${index + 1}</td>
@@ -395,6 +381,15 @@
                         proccedUserId.push(editData.id);
                     });
                 }
+
+                let selectedUserId = $('#input_user_id').val();
+                $('#input_parent_user_id').find('option').each(function() {
+                    if ($.inArray($(this).val(), selectedUserId) !== -1) {
+                        $(this).prop('disabled', true);
+                    } else {
+                        $(this).prop('disabled', false);
+                    }
+                });
             });
         }
 
@@ -482,6 +477,7 @@
                 }
             });
         }
+
         async function showSelectList(id, isUrl) {
             await $(`${id}`).select2({
                 language: languageIndonesian,
@@ -518,6 +514,7 @@
                 placeholder: ''
             });
         }
+
         async function initPageLoad() {
 
             await Promise.all([

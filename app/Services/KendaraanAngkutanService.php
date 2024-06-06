@@ -107,6 +107,8 @@ class KendaraanAngkutanService
         $data->perusahaan_id = $request->perusahaan_id ?? $data->perusahaan_id;
         $data->jenis_angkutan_id = $request->jenis_angkutan_id ?? $data->jenis_angkutan_id;
         $data->trayek_id = $request->trayek_id ?? $data->trayek_id;
+        $data->provinsi_id = $request->provinsi_id ?? $data->provinsi_id;
+        $data->kota_id = $request->kota_id ?? $data->kota_id;
         $data->rute_trayek_id = $request->rute_trayek_id ?? $data->rute_trayek_id;
         $data->jenis_layanan_id = $request->jenis_layanan_id ?? $data->jenis_layanan_id;
         $data->kendaraan_id = $request->kendaraan_id ?? $data->kendaraan_id;

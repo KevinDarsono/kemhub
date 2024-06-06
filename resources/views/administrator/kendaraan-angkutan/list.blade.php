@@ -78,7 +78,7 @@
 
     <div class="p-2 d-flex">
         <div class="p-2 d-flex align-content-end flex-wrap">
-            <label for="descriptionLimitPage">Menampilkan <span id="countPage">0</span> 
+            <label for="descriptionLimitPage">Menampilkan <span id="countPage">0</span>
                 dari <span id="totalPage">0</span> data</label>
         </div>
         <div class="ms-auto p-2">
@@ -267,7 +267,7 @@
         loadingPage(true)
         const getDataRest = await CallAPI(
             'GET',
-            `{{ route('api.administrator.kendaraan-angkutan.list') }}`, 
+            `{{ route('api.administrator.kendaraan-angkutan.list') }}`,
             {
                 page: page,
                 limit: limit,
@@ -365,12 +365,12 @@
             isActionForm = "detail";
 
             let id = $(this).parent().attr("data-id")
-            
+
             $(".modal-title").html(modalTitle)
 
             const getDataRest = await CallAPI(
                 'GET',
-                `{{ route('api.administrator.kendaraan-angkutan.find') }}`, 
+                `{{ route('api.administrator.kendaraan-angkutan.find') }}`,
                 {
                     id: id
                 }
@@ -476,7 +476,7 @@
                         <th>Dibuat</th>
                         <td>: ${moment(data.created_at).format("MM-DD-YYYY HH:MM:ss")}</td>
                     </tr>
-                    
+
                 `
 
                 $("#tableDetail").html(domHtml);
@@ -495,7 +495,7 @@
 
             const getDataRest = await CallAPI(
                 'GET',
-                `{{ route('api.administrator.kendaraan-angkutan.find') }}`, 
+                `{{ route('api.administrator.kendaraan-angkutan.find') }}`,
                 {
                     id: id
                 }
@@ -569,7 +569,7 @@
                 if (result) {
                     const postDataRest = await CallAPI(
                         'DELETE',
-                        `{{ route('api.administrator.kendaraan-angkutan.destroy') }}`, 
+                        `{{ route('api.administrator.kendaraan-angkutan.destroy') }}`,
                         {
                             "id": id
                         }

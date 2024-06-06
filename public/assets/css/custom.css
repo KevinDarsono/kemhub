@@ -1,0 +1,4 @@
+.btn:hover {
+    filter: brightness(70%);
+    transition: filter 0.3s ease;
+}

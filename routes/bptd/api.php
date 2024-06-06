@@ -14,7 +14,9 @@ use App\Http\Controllers\Administrator\API\Master\ {
 use App\Http\Controllers\Administrator\API\{
     KendaraanAngkutanController,
     PersetujuanController,
+    UjiBlueController,
 };
+use App\Http\Controllers\Administrator\DataIntegration\Blue\KendaraanController as BlueKendaraanController;
 
 Route::fallback(function() {
     return response()->json([
@@ -59,10 +61,27 @@ Route::group(['prefix' => 'kendaraan-angkutan'], function() {
     });
 });
 
+Route::group(['prefix' => 'uji-blue'], function() {
+    Route::controller(UjiBlueController::class)->group(function(){
+        Route::get('/find', 'show')->name('uji-blue.find');
+        Route::get('/list', 'index')->name('uji-blue.list');
+    });
+});
+
 Route::group(['prefix' => 'persetujuan'], function(){
     Route::controller(PersetujuanController::class)->group(function(){
         Route::get('list', 'index')->name('persetujuan.list');
         Route::post('setujui', 'setujui')->name('persetujuan.setujui');
+    });
+});
 
+Route::middleware(['token_data_integration'])->group(function () {
+    Route::prefix('blue')->group(function () {
+        Route::prefix('kendaraan')->group(function () {
+            Route::controller(BlueKendaraanController::class)->group(function () {
+                Route::get('/find', 'find')->name('blue.kendaraan.find');
+                Route::get('/list', 'list')->name('blue.kendaraan.list');
+            });
+        });
     });
 });

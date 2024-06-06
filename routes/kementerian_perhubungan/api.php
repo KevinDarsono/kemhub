@@ -31,6 +31,8 @@ use App\Http\Controllers\Administrator\API\Master\ {
     UnitKerjaController,
 };
 
+use App\Http\Controllers\Administrator\DataIntegration\Blue\KendaraanController as BlueKendaraanController;
+
 
 Route::fallback(function() {
     return response()->json([
@@ -169,4 +171,13 @@ Route::group(['prefix' => 'kendaraan-angkutan'], function() {
     });
 });
 
-
+Route::middleware(['token_data_integration'])->group(function () {
+    Route::prefix('blue')->group(function () {
+        Route::prefix('kendaraan')->group(function () {
+            Route::controller(BlueKendaraanController::class)->group(function () {
+                Route::get('/find', 'find')->name('blue.kendaraan.find');
+                Route::get('/list', 'list')->name('blue.kendaraan.list');
+            });
+        });
+    });
+});

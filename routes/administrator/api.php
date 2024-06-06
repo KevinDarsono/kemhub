@@ -8,6 +8,7 @@ use App\Http\Controllers\Administrator\API\{
     ApprovalFlowConfigController,
     DashboardController as APIDashboardController,
     KendaraanAngkutanController,
+    UjiBlueController,
     UserGroupController,
     UserManagementController
 };
@@ -19,12 +20,13 @@ use App\Http\Controllers\Administrator\API\Master\{
     KotaController,
     ProvinsiController,
     PerusahaanController,
+    PerusahaanV2Controller,
     KendaraanController,
     RuteTrayekController,
     TrayekController,
     UnitKerjaController,
 };
-
+use App\Http\Controllers\Administrator\DataIntegration\Blue\KendaraanController as BlueKendaraanController;
 
 Route::fallback(function () {
     return response()->json([
@@ -80,8 +82,8 @@ Route::group(['prefix' => 'master'], function () {
             Route::delete('/delete', 'destroy')->name('master.rute-trayek.destroy');
         });
     });
-    Route::group(['prefix' => 'perusahaan'], function () {
-        Route::controller(PerusahaanController::class)->group(function () {
+    Route::group(['prefix' => 'perusahaan-v1'], function() {
+        Route::controller(PerusahaanController::class)->group(function(){
             Route::get('/find', 'show')->name('master.perusahaan.find');
             Route::get('/list', 'index')->name('master.perusahaan.list');
             Route::post('/create', 'store')->name('master.perusahaan.create');
@@ -89,8 +91,14 @@ Route::group(['prefix' => 'master'], function () {
             Route::delete('/delete', 'destroy')->name('master.perusahaan.destroy');
         });
     });
-    Route::group(['prefix' => 'kendaraan'], function () {
-        Route::controller(KendaraanController::class)->group(function () {
+    Route::group(['prefix' => 'perusahaan'], function() {
+        Route::controller(PerusahaanV2Controller::class)->group(function(){
+            Route::get('/find', 'show')->name('master.perusahaan.find');
+            Route::get('/list', 'index')->name('master.perusahaan.list');
+        });
+    });
+    Route::group(['prefix' => 'kendaraan'], function() {
+        Route::controller(KendaraanController::class)->group(function(){
             Route::get('/find', 'show')->name('master.kendaraan.find');
             Route::get('/list', 'index')->name('master.kendaraan.list');
             Route::post('/create', 'store')->name('master.kendaraan.create');
@@ -138,6 +146,7 @@ Route::group(['prefix' => 'user-management'], function () {
 Route::group(['prefix' => 'konfigurasi-alur-persetujuan'], function () {
     Route::controller(ApprovalFlowConfigController::class)->group(function () {
         Route::get('/find', 'show')->name('konfigurasi-alur-persetujuan.find');
+        Route::get('/find-province', 'showProvince')->name('konfigurasi-alur-persetujuan.find-province');
         Route::get('/list', 'index')->name('konfigurasi-alur-persetujuan.list');
         Route::post('/create', 'store')->name('konfigurasi-alur-persetujuan.create');
         Route::put('/update', 'update')->name('konfigurasi-alur-persetujuan.update');
@@ -156,9 +165,8 @@ Route::group(['prefix' => 'pengelolaan-grup-pengguna'], function () {
     });
 });
 
-
-Route::group(['prefix' => 'kendaraan-angkutan'], function () {
-    Route::controller(KendaraanAngkutanController::class)->group(function () {
+Route::group(['prefix' => 'kendaraan-angkutan'], function() {
+    Route::controller(KendaraanAngkutanController::class)->group(function(){
         Route::get('/find', 'show')->name('kendaraan-angkutan.find');
         Route::get('/list', 'index')->name('kendaraan-angkutan.list');
         Route::post('/create', 'store')->name('kendaraan-angkutan.create');
@@ -168,5 +176,23 @@ Route::group(['prefix' => 'kendaraan-angkutan'], function () {
     });
 });
 
-Route::group(['prefix' => 'persetujuan'], function () {
+Route::group(['prefix' => 'uji-blue'], function() {
+    Route::controller(UjiBlueController::class)->group(function(){
+        Route::get('/find', 'show')->name('uji-blue.find');
+        Route::get('/list', 'index')->name('uji-blue.list');
+        Route::get('persetujuan', 'persetujuan')->name('uji-blue.persetujuan');
+        Route::post('ajukan', 'ajukan')->name('uji-blue.ajukan');
+
+    });
+});
+
+Route::middleware(['token_data_integration'])->group(function () {
+    Route::prefix('blue')->group(function () {
+        Route::prefix('kendaraan')->group(function () {
+            Route::controller(BlueKendaraanController::class)->group(function () {
+                Route::get('/find', 'find')->name('blue.kendaraan.find');
+                Route::get('/list', 'list')->name('blue.kendaraan.list');
+            });
+        });
+    });
 });

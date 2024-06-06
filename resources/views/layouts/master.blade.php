@@ -22,16 +22,17 @@
     <!--! BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/theme.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/loading.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
     <script>
-        document.onreadystatechange = function () {
+        document.onreadystatechange = function() {
             var state = document.readyState;
             if (state == 'complete') {
-                setTimeout(function(){
+                setTimeout(function() {
                     document.getElementById('preloaderLoadingPage').style.display = 'none';
-                    if(window.initPageLoad) {
-                      initPageLoad();
+                    if (window.initPageLoad) {
+                        initPageLoad();
                     }
-                },100);
+                }, 100);
             }
         }
     </script>
@@ -42,14 +43,16 @@
     {{-- loading page --}}
     <div id="preloaderLoadingPage">
         <div class="sk-three-bounce">
-          <div class="centerpreloader">
-            <div class="ui-loading"></div>
-            <center><h6 style="color: white;">Loading...</h6></center>
-          </div>
+            <div class="centerpreloader">
+                <div class="ui-loading"></div>
+                <center>
+                    <h6 style="color: white;">Loading...</h6>
+                </center>
+            </div>
         </div>
     </div>
     {{-- end loading page --}}
-    
+
     <!--! ================================================================ !-->
     <!--! [Start] Navigation Manu !-->
     <!--! ============================================x==================== !-->
@@ -138,20 +141,20 @@
         };
 
         function loadingPage(show) {
-            if(show == true) {
+            if (show == true) {
                 document.getElementById('preloaderLoadingPage').style.display = '';
             } else {
                 document.getElementById('preloaderLoadingPage').style.display = 'none';
             }
-                return;
+            return;
         }
 
         function formatNumberToWithPoint(num) {
-            return accounting.formatMoney(num, "", 0, "."); 
+            return accounting.formatMoney(num, "", 0, ".");
         }
 
         function formatNumberToIDR(nominal) {
-            return accounting.formatMoney(nominal, "Rp ", 0, "."); 
+            return accounting.formatMoney(nominal, "Rp ", 0, ".");
         }
 
         function formatNumber(num) {
@@ -175,14 +178,14 @@
             await initDataOnTable(defaultLimitPage, currentPage, defaultAscending, defaultSearch)
         }
 
-        $("#menu-mini-button").click(function(){
+        $("#menu-mini-button").click(function() {
             $(".classRoleHide").hide();
         });
 
-        $("#menu-expend-button").click(function(){
+        $("#menu-expend-button").click(function() {
             $(".classRoleHide").show();
         });
-    
+
         function debounce(func, wait, immediate) {
             let timeout;
             return function() {
@@ -198,7 +201,7 @@
                 if (callNow) func.apply(context, args)
             };
         }
-    
+
         async function manipulationDataOnTable() {
             $(document).on("change", "#limitPage", async function() {
                 defaultLimitPage = $(this).val()
@@ -206,11 +209,11 @@
                 await getListData(defaultLimitPage, currentPage, defaultAscending, defaultSearch)
                 await paginationDataOnTable(defaultLimitPage)
             })
-            
+
             $(document).on("input", ".search-input", debounce(performSearch, 500))
             await paginationDataOnTable(defaultLimitPage)
         }
-    
+
         function paginationDataOnTable(isPageSize) {
             $('#pagination-js').pagination({
                 dataSource: Array.from({
@@ -232,14 +235,13 @@
                 },
             })
         }
-    
+
         async function initDataOnTable(defaultLimitPage, currentPage, defaultAscending, defaultSearch) {
             await getListData(defaultLimitPage, currentPage, defaultAscending, defaultSearch)
             await paginationDataOnTable(defaultLimitPage)
         }
 
         // end table function
-
     </script>
 
     @yield('page_js')

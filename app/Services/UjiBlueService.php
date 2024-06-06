@@ -2,13 +2,15 @@
 
 namespace App\Services;
 
-use App\Models\GroupUser;
+use App\Models\ApprovalFlow;
+use App\Models\ApprovalFlowConfig;
+use App\Models\UjiBlue;
 
-class UserGroupService
+class UjiBlueService
 {
 
     public function getModel(){
-        return GroupUser::with('user', 'parentUser');
+        return UjiBlue::query();
     }
 
     public function getDatatable($request, $meta)
@@ -51,50 +53,42 @@ class UserGroupService
         return $this->getModel()->where('id', $id)->first();
     }
 
-    public function getDetailList($id){
-        return $this->getModel()->where('user_id', $id)->get();
-    }
-    public function store($request)
-    {
-        $data = $this->setContent($request);
-        return $data;
-    }
+    public function ajukanPersetujuan($id){
+        $ujiBlue = UjiBlue::find($id);
 
-    public function update($id, $request)
-    {
-        $data = $this->setContentUpdate($request);
-        return $data;
-    }
+        $approvalFlowConfig = ApprovalFlowConfig::where('provinsi_id', $ujiBlue->provinsi_id)
+        ->orderBy('tier', 'asc')
+        ->get();
 
-    public function delete($id)
-    {
-        $data = $this->getDetailByID($id);
-        $data->delete();
-        $data->save();
-        return $data ?? [];
-    }
-
-    public function setContent($request){
-        $this->getModel()->where('user_id', $request->user_id)->update([
-            'deleted_at' => date('Y-m-d H:i:s')
-        ]);
-        foreach ($request->parent_user_id as $key => $value) {
-            $data = new GroupUser();
-            $data->user_id = $request->user_id;
-            $data->parent_user_id = $value;
-            $data->save();
+        foreach ($approvalFlowConfig as $key => $value) {
+            $approvalFlow = new ApprovalFlow();
+            $approvalFlow->ref_id = $id;
+            $approvalFlow->ref_code_data = "UJI_BLUE";
+            $approvalFlow->user_id = $value->approver_user_id;
+            $approvalFlow->tier = $value->tier;
+            $approvalFlow->save();
         }
-        return $data;
+
+        return $approvalFlowConfig;
     }
 
-    public function setContentUpdate($request){
-        $this->getModel()->where('user_id', $request->user_id)->update([]);
-        foreach ($request->parent_user_id as $key => $value) {
-            $data = new GroupUser();
-            $data->user_id = $request->user_id;
-            $data->parent_user_id = $value;
-            $data->save();
+    public function alurPersetujuan($idBlue)
+    {
+        $ujiBlue = UjiBlue::find($idBlue);
+
+        $status = ApprovalFlowConfig::where('provinsi_id', $ujiBlue->provinsi_id)
+        ->with('approver')
+        ->orderBy('tier', 'asc')
+        ->get();
+
+        foreach ($status as $key => $value) {
+            $status[$key]['histories'] = ApprovalFlow::where('ref_id', $idBlue)
+            ->where('user_id', $value->approver_user_id)
+            ->get();
         }
-        return $data;
+
+        return $status;
     }
+
+
 }

@@ -24,6 +24,10 @@ use App\Http\Controllers\Administrator\Trayek\{
     RuteController as AdminTrayekRuteController
 };
 
+use App\Http\Controllers\Administrator\Konfigurasi\{
+    AlurPersetujuanController,
+};
+
 
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -61,6 +65,9 @@ Route::group(['prefix' => 'trayek'], function() {
 
 });
 
-Route::get('/pengelola-group-pengguna', [GroupUserContoller::class, 'index'])->name('pengelola-group-pengguna');
+Route::group(['prefix' => 'konfigurasi'], function() {
+    Route::get('/alur-persetujuan', [AlurPersetujuanController::class, 'index'])->name('konfigurasi.alur-persetujuan');
+    Route::get('/grup-pengguna', [GroupUserContoller::class, 'index'])->name('konfigurasi.grup-pengguna');
+});
 
 

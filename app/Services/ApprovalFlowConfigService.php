@@ -9,7 +9,7 @@ class ApprovalFlowConfigService
 {
 
     public function getModel(){
-        return ApprovalFlowConfig::with('user', 'approver');
+        return ApprovalFlowConfig::with('provinsi', 'approver');
     }
 
     public function getDatatable($request, $meta)
@@ -33,6 +33,11 @@ class ApprovalFlowConfigService
             $query = $query->where('approver_user_id', $request->approver_user_id);
         }
 
+        if($request->provinsi_id !== null){
+            $query = $query->where('provinsi_id', $request->provinsi_id);
+        }
+
+
         $query = $query->orderBy('created_at', $meta['orderBy']);
 
         $data = $query->paginate($meta['limit']);
@@ -52,6 +57,11 @@ class ApprovalFlowConfigService
         return $this->getModel()->where('id', $id)->first();
     }
 
+    public function getDetailByProvinceID($id)
+    {
+        return $this->getModel()->where('provinsi_id', $id)->get();
+    }
+
     public function store($request)
     {
         $data = $this->setContent($request);
@@ -66,19 +76,21 @@ class ApprovalFlowConfigService
 
     public function delete($id)
     {
-        $data = $this->getDetailByID($id);
-        $data->delete();
-        $data->save();
-        return $data ?? [];
+        $this->getModel()->where('provinsi_id', $id)->update([
+            'deleted_at' => date('Y-m-d H:i:s')
+        ]);
+
+        return true;
     }
 
     public function setContent($request){
-        $this->getModel()->where('user_id', $request->user_id)->update([
+        $this->getModel()->where('provinsi_id', $request->provinsi_id)->update([
             'deleted_at' => date('Y-m-d H:i:s')
         ]);
+
         foreach ($request->approver_user_id as $key => $value) {
             $data = new ApprovalFlowConfig();
-            $data->user_id = $request->user_id ?? $data->user_id;
+            $data->provinsi_id = $request->provinsi_id;
             $data->approver_user_id = $value;
             $data->tier = $key + 1;
             $data->is_finish = $key == count($request->approver_user_id) - 1 ? true : false;
@@ -88,4 +100,6 @@ class ApprovalFlowConfigService
         return $data;
 
     }
+
+
 }

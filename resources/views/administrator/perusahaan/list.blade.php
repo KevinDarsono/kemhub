@@ -86,7 +86,7 @@
 
     <div class="p-2 d-flex">
         <div class="p-2 d-flex align-content-end flex-wrap">
-            <label for="descriptionLimitPage">Menampilkan <span id="countPage">0</span> 
+            <label for="descriptionLimitPage">Menampilkan <span id="countPage">0</span>
                 dari <span id="totalPage">0</span> data</label>
         </div>
         <div class="ms-auto p-2">
@@ -267,12 +267,12 @@
     let totalPage = 1;
     let defaultAscending = 0;
     let defaultSearch = '';
-    
+
     async function getListData(limit = 10, page = 1, ascending = 0, search = '') {
         loadingPage(true)
         const getDataRest = await CallAPI(
             'GET',
-            `{{ route('api.administrator.master.perusahaan.list') }}`, 
+            `{{ route('api.administrator.master.perusahaan.list') }}`,
             {
                 page: page,
                 limit: limit,
@@ -358,12 +358,12 @@
             isActionForm = "detail";
 
             let id = $(this).parent().attr("data-id")
-            
+
             $(".modal-title").html(modalTitle)
 
             const getDataRest = await CallAPI(
                 'GET',
-                `{{ route('api.administrator.master.perusahaan.find') }}`, 
+                `{{ route('api.administrator.master.perusahaan.find') }}`,
                 {
                     id: id
                 }
@@ -442,7 +442,7 @@
                         <th>Tgl SK Expired</th>
                         <td>: ${data.tanggal_sk_expired?data.tanggal_sk_expired:'-'}</td>
                     </tr>
-                
+
                 `
 
                 $("#tableDetail").html(domHtml);
@@ -461,7 +461,7 @@
 
             const getDataRest = await CallAPI(
                 'GET',
-                `{{ route('api.administrator.master.perusahaan.find') }}`, 
+                `{{ route('api.administrator.master.perusahaan.find') }}`,
                 {
                     id: id
                 }
@@ -491,7 +491,7 @@
                 $("#input_provinsi_id").append(input_provinsi_id).trigger('change');
                 let input_kota_id = new Option(data.kota.nama, data.kota.id, true, true);
                 $("#input_kota_id").append(input_kota_id).trigger('change');
-                
+
                 $('#input_nama_pimpinan').val(data.nama_pimpinan)
                 $('#input_email').val(data.email)
                 $('#input_no_telpon_perusahaan').val(data.no_telpon_perusahaan)
@@ -500,7 +500,7 @@
                 $('#input_no_sk_izin_penyelenggaraan').val(data.no_sk_izin_penyelenggaraan)
                 $('#input_tanggal_sk_terbit').val(moment(data.tanggal_sk_terbit).format("YYYY-MM-DD"))
                 $('#input_tanggal_sk_expired').val(moment(data.tanggal_sk_expired).format("YYYY-MM-DD"))
-                
+
             }
         })
     }
@@ -518,10 +518,10 @@
                 cancelButtonText: "Tidak, Batal!",
                 reverseButtons: true
             }).then(async (result) => {
-                if (result) {
+                if (result.value) {
                     const postDataRest = await CallAPI(
                         'DELETE',
-                        `{{ route('api.administrator.master.perusahaan.destroy') }}`, 
+                        `{{ route('api.administrator.master.perusahaan.destroy') }}`,
                         {
                             "id": id
                         }
@@ -573,7 +573,7 @@
 
             const postDataRest = await CallAPI(
                 method,
-                url, 
+                url,
                 data
             ).then(function(response) {
                 return response

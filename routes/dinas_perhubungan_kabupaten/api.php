@@ -6,7 +6,9 @@ use App\Constants\HttpStatusCodes;
 
 use App\Http\Controllers\DinasPerhubunganKota\API\{
     DashboardController as APIDashboardController,
+    UjiBlueController,
 };
+
 
 use App\Http\Controllers\Administrator\API\{
     KendaraanAngkutanController,
@@ -30,7 +32,7 @@ use App\Http\Controllers\DinasPerhubunganKota\API\Master\{
     PerusahaanController,
 };
 
-
+use App\Http\Controllers\Administrator\DataIntegration\Blue\KendaraanController as BlueKendaraanController;
 
 Route::fallback(function() {
     return response()->json([
@@ -127,5 +129,25 @@ Route::group(['prefix' => 'kendaraan-angkutan'], function() {
         Route::put('/update', 'update')->name('kendaraan-angkutan.update');
         Route::delete('/delete', 'destroy')->name('kendaraan-angkutan.destroy');
         Route::get('persetujuan', 'persetujuan')->name('kendaraan-angkutan.persetujuan');
+    });
+});
+
+Route::group(['prefix' => 'uji-blue'], function() {
+    Route::controller(UjiBlueController::class)->group(function(){
+        Route::get('/find', 'show')->name('uji-blue.find');
+        Route::get('/list', 'index')->name('uji-blue.list');
+        Route::get('persetujuan', 'persetujuan')->name('uji-blue.persetujuan');
+        Route::post('ajukan', 'ajukan')->name('uji-blue.ajukan');
+    });
+});
+
+Route::middleware(['token_data_integration'])->group(function () {
+    Route::prefix('blue')->group(function () {
+        Route::prefix('kendaraan')->group(function () {
+            Route::controller(BlueKendaraanController::class)->group(function () {
+                Route::get('/find', 'find')->name('blue.kendaraan.find');
+                Route::get('/list', 'list')->name('blue.kendaraan.list');
+            });
+        });
     });
 });

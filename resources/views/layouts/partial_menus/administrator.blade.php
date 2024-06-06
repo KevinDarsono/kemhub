@@ -74,9 +74,23 @@
         </li>
     </ul>
 </li>
-<li class="nxl-item nxl-hasmenu {{ set_active_menu('app.administrator.pengelola-group-pengguna', 'active') }}">
-    <a href="{{ route('app.administrator.pengelola-group-pengguna') }}" class="nxl-link">
-        <span class="nxl-micon"><i class="fa-solid fa-truck-arrow-right"></i></span>
-        <span class="nxl-mtext">Pengelola Grup</span>
+
+
+<li class="nxl-item nxl-hasmenu {{ set_active_menu(
+    ['app.administrator.konfigurasi.*'],
+    'nxl-trigger') }}">
+    <a href="javascript:void(0);" class="nxl-link">
+        <span class="nxl-micon"><i class="fa-solid fa-cog"></i></span>
+        <span class="nxl-mtext">Konfigurasi</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
     </a>
+    <ul class="nxl-submenu">
+        <li class="nxl-item {{ set_active_menu('app.administrator.konfigurasi.grup-pengguna', 'active') }}">
+            <a class="nxl-link" href="{{ route('app.administrator.konfigurasi.grup-pengguna') }}">Grup Pengguna</a>
+        </li>
+        <li class="nxl-item {{ set_active_menu('app.administrator.konfigurasi.alur-persetujuan', 'active') }}">
+            <a class="nxl-link" href="{{ route('app.administrator.konfigurasi.alur-persetujuan') }}">Alur Persetujuan</a>
+        </li>
+
+
+    </ul>
 </li>
