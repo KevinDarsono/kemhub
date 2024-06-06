@@ -104,7 +104,7 @@
                                 <select class="form-control" name="parent_user_id[]" id="input_parent_user_id"
                                     multiple></select>
                             </div>
-                            <div class="table-responsive">
+                            <div class="table-responsive" id="tableEdit">
                                 <table class="table table-hover table-striped" style="width: 100%" id="tableEditList">
                                     <thead>
                                         <tr class="tb-head">
@@ -276,7 +276,7 @@
                 $("form").find("select").val("").prop("checked", true).trigger("change");
                 $(".modal-title").html(modalTitle);
                 $("#modalData").modal("show");
-
+                $("#tableEdit").hide()
             });
         }
 
@@ -363,6 +363,7 @@
                     $("form").find("select").val("").prop("select,input,checked", false).trigger("change");
                     $(".modal-title").html(modalTitle);
                     $("#modalData").modal("show");
+                    $("#tableEdit").show()
 
                     let data = getDataRest.data.data;
                     let proccedUserId = []
