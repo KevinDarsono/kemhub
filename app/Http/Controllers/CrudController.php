@@ -18,23 +18,24 @@ class CrudController extends Controller
     }
 
 
-    protected function generateMessageV2($title = "data", $type = null){
+    protected function generateMessageV2($title = "data", $type = null)
+    {
         $message = '';
         switch ($type) {
             case 'create':
-                $message = $title.' Berhasil Ditambahkan';
+                $message = $title . ' Berhasil Ditambahkan';
                 break;
 
             case 'update':
-                $message = $title.' Berhasil Diubah';
+                $message = $title . ' Berhasil Diubah';
                 break;
 
             case 'delete':
-                $message = $title.' Berhasil Dihapus';
+                $message = $title . ' Berhasil Dihapus';
                 break;
 
             case 'restore':
-                $message = $title.' Berhasil Dipulihkan';
+                $message = $title . ' Berhasil Dipulihkan';
                 break;
 
             default:
@@ -72,8 +73,29 @@ class CrudController extends Controller
             ], HttpStatusCodes::HTTP_BAD_REQUEST);
         }
 
-        // $data = $this->service->getDetailByID($request->id);
         $data = $this->service->getDetailByID($request->id);
+
+        return response()->json([
+            'error' => false,
+            'message' => 'Successfully',
+            'status_code' => HttpStatusCodes::HTTP_OK,
+            'data' => $data,
+        ], HttpStatusCodes::HTTP_OK);
+    }
+
+    public function showDetail(Request $request)
+    {
+        $validator = $this->runValidationShowList($request);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status_code' => HttpStatusCodes::HTTP_BAD_REQUEST,
+                'error' => true,
+                'message' => $validator->errors()->all()[0]
+            ], HttpStatusCodes::HTTP_BAD_REQUEST);
+        }
+
+        $data = $this->service->getDetailList($request->id);
 
         return response()->json([
             'error' => false,

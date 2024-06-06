@@ -47,7 +47,7 @@ Route::group(['prefix' => 'perusahaan'], function() {
 
 });
 
-    
+
 
 // MASTER
 Route::group(['prefix' => 'master'], function() {

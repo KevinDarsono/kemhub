@@ -5,7 +5,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
 @endsection
 
-
 @section('page_css')
     <style>
         .paginationjs {
@@ -13,8 +12,6 @@
         }
     </style>
 @endsection
-
-
 
 @section('action_header')
     <div class="page-header-right ms-auto">
@@ -88,28 +85,45 @@
                     <div class="modal-body">
                         <input type="hidden" name="id" id="inputId" />
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group mb-3">
-                                    <label for="">
-                                        User
-                                        <small class="text-danger">
-                                            *
-                                        </small>
-                                    </label>
-                                    <select class="form-control" name="user_id" id="input_user_id">
+                            <div class="col-md-6 form-control">
+                                <label for="">
+                                    User
+                                    <small class="text-danger">
+                                        *
+                                    </small>
+                                </label>
+                                <select class="form-control" name="user_id" id="input_user_id"></select>
+                            </div>
+                            <div class="col-md-6 form-control">
+                                <label for="">
+                                    Parent User
+                                    <small class="text-danger">
+                                        *
+                                    </small>
+                                </label>
+                                <select class="form-control" name="parent_user_id[]" id="input_parent_user_id"
+                                    multiple></select>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover table-striped" style="width: 100%" id="tableEditList">
+                                    <thead>
+                                        <tr class="tb-head">
+                                            <th>No</th>
+                                            <th>User</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
 
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group mb-3">
-                                    <label for="">Parent User <sup>
-                                            <font color="red">*</font>
-                                        </sup></label>
-                                    <select class="form-control" name="parent_user_id[]" id="input_parent_user_id"
-                                        multiple></select>
-                                </div>
-                            </div>
+                            {{-- <label for="">Parent User <sup>
+                                    <font color="red">*</font>
+                                </sup></label>
+                            <div class="mb-2">
+                                <input type="text" name="parent_user_id" id="input_parent_user_id" class="form-control"
+                                    placeholder="Enter Role Name" />
+                                <button type="button" id="add_parent_user" class="btn btn-primary mt-2">Add</button>
+                            </div> --}}
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -132,13 +146,11 @@
                 </div>
                 <div class="modal-body">
                     <div class="table-responsive">
-                        <table class="table table-hover table-striped" style="width: 100%" id="tableDetail"></table>
                         <table class="table table-hover table-striped" style="width: 100%" id="tableDetailList">
                             <thead>
                                 <tr class="tb-head">
                                     <th>No</th>
                                     <th>User</th>
-                                    <th class="text-end">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -173,7 +185,6 @@
         let defaultSearch = '';
         let userManagementListRoute = `{{ route('api.administrator.user-management.list') }}`;
 
-
         async function getListData(limit = 10, page = 1, ascending = 0, search = '') {
             loadingPage(true);
             const getDataRest = await CallAPI(
@@ -195,59 +206,66 @@
 
             if (getDataRest.status == 200) {
                 loadingPage(false);
-                totalPage = getDataRest.data.pagination.total;
                 let data = getDataRest.data.data;
+
+                // Calculate unique users
+                let uniqueUserIds = new Set();
+                data.forEach(item => uniqueUserIds.add(item.user.id));
+                let totalUniqueUsers = uniqueUserIds.size;
+
                 let display_from = ((defaultLimitPage * getDataRest.data.pagination.current_page) + 1) -
                     defaultLimitPage;
                 let display_to = currentPage < getDataRest.data.pagination.total_pages ? data.length <
                     defaultLimitPage ? data.length : (defaultLimitPage * getDataRest.data.pagination.current_page) :
-                    totalPage;
-                $('#totalPage').text(getDataRest.data.pagination.total);
+                    totalUniqueUsers;
+
+                $('#totalPage').text(totalUniqueUsers);
                 $('#countPage').text("" + display_from + " - " + display_to + "");
+
                 let appendHtml = "";
                 let index_loop = display_from;
-                let displayedUserIds = new Set(); // Untuk melacak user_id yang sudah ditampilkan
+                let displayedUserIds = new Set(); // To keep track of user_ids that have already been displayed
 
                 for (let index = 0; index < data.length; index++) {
                     let element = data[index];
-
-                    // Hanya tampilkan baris untuk user_id yang belum ditampilkan
+                    // Only display rows for user_ids that haven't been displayed yet
                     if (!displayedUserIds.has(element.user.id)) {
                         appendHtml += `
-                    <tr>
-                        <td>${index_loop}</td>
-                        <td>${element.user.name_role ? element.user.name_role : '-'}</td>
-
-                        <td>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end" data-id="${element.user_id}">
-                                <button class="btn btn-info btn-sm me-md-2 detail-data" type="button" title="Detail">
-                                    <i class="fa-solid fa-eye"></i>
-                                </button>
-                                <button class="btn btn-warning btn-sm me-md-2 edit-data" type="button" title="Ubah">
-                                    <i class="fa-solid fa-pen"></i>
-                                </button>
-                                <button class="btn btn-danger btn-sm delete-data" type="button" title="Hapus">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>`;
-                        // Tambahkan user_id ke set yang sudah ditampilkan
+                            <tr>
+                                <td>${index_loop}</td>
+                                <td>${element.user.name_role ? element.user.name_role : '-'}</td>
+                                <td>
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <button class="btn btn-info btn-sm me-md-2 detail-data" type="button" title="Detail" data-id="${element.user_id}">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </button>
+                                        <button class="btn btn-warning btn-sm me-md-2 edit-data" type="button" title="Ubah" data-id="${element.user_id}">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+                                        <button class="btn btn-danger btn-sm delete-data" type="button" title="Hapus" data-id="${element.id}">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>`;
+                        // Add user_id to the set of displayed user_ids
                         displayedUserIds.add(element.user.id);
                         index_loop++;
                     }
                 }
-                if (totalPage == 0) {
+
+                if (totalUniqueUsers == 0) {
                     appendHtml = `
-                <tr>
-                    <th class="text-center" colspan="${$('.tb-head th').length}"> Tidak ada data. </th>
-                </tr>
+            <tr>
+                <th class="text-center" colspan="${$('.tb-head th').length}"> Tidak ada data. </th>
+            </tr>
             `;
                     $('#countPage').text("0 - 0");
                 }
                 $('#tableData tbody').html(appendHtml);
             }
         }
+
 
         // Action
         function addData() {
@@ -262,84 +280,18 @@
             });
         }
 
-        // async function detailData() {
-        //     $(document).on("click", ".detail-data", async function() {
-        //         loadingPage(true)
-        //         modalTitle = "Detail Data {{ $title }}";
-        //         isActionForm = "detail";
-
-        //         let id = $(this).parent().attr("data-id")
-
-        //         $(".modal-title").html(modalTitle)
-
-        //         const getDataRest = await CallAPI(
-        //             'GET',
-        //             `{{ route('api.administrator.pengelolaan-grup-pengguna.find') }}`, {
-        //                 id: id
-        //             }
-        //         ).then(function(response) {
-        //             return response;
-        //         }).catch(function(error) {
-        //             loadingPage(false)
-        //             let resp = error.response;
-        //             notificationAlert('info', 'Pemberitahuan', resp.data.message)
-        //             return resp;
-        //         })
-
-        //         if (getDataRest.status == 200) {
-        //             loadingPage(false)
-        //             $("form").find("input, select, textarea").val("").prop("checked", false)
-        //                 .trigger("change")
-        //             $(".modal-title").html(modalTitle)
-        //             $("#modalDetail").appendTo("body").modal("show")
-
-        //             let data = getDataRest.data.data;
-
-        //             console.log(data)
-
-        //             let domHtml = `
-    //             <tr>
-    //                 <th>User Input</th>
-    //                 <td>: ${data.user.name_role?data.user.name_role:'-'}</td>
-
-    //             </tr>
-
-    //              `
-        //              let listData = `
-    //              <tr>
-    //                 <td>${data.parent_user.name_role?data.parent_user.name_role:'-'}</td>
-    //                 <td>
-    //                     <div class="d-grid gap-2 d-md-flex justify-content-md-end" data-id="${data.user.id}">
-    //                         <button class="btn btn-danger btn-sm delete-data" type="button" title="Hapus">
-    //                             <i class="fa-solid fa-trash"></i>
-    //                         </button>
-    //                     </div>
-    //                 </td>
-    //             </tr>
-    //              `
-        //             // list table
-        //             $("#tableDetail").html(domHtml);
-        //             $("#tableDetailList tbody").html(listData);
-
-
-
-
-        //         }
-        //     })
-        // }
         async function detailData() {
             $(document).on("click", ".detail-data", async function() {
-                loadingPage(true); // Show loading indicator
+                loadingPage(true)
                 modalTitle = "Detail Data {{ $title }}";
                 isActionForm = "detail";
 
-                let id = $(this).parent().attr("data-id");
-
-                $(".modal-title").html(modalTitle);
+                let id = $(this).attr("data-id");
+                $(".modal-title").html(modalTitle)
 
                 const getDataRest = await CallAPI(
                     'GET',
-                    `{{ route('api.administrator.pengelolaan-grup-pengguna.find') }}`, {
+                    `{{ route('api.administrator.pengelolaan-grup-pengguna.detail') }}`, {
                         id: id
                     }
                 ).then(function(response) {
@@ -353,126 +305,161 @@
                 });
 
                 if (getDataRest.data.status_code == 200) {
-                    loadingPage(false); // Hide loading indicator
+                    loadingPage(false);
                     $("form").find("input, select, textarea").val("").prop("checked", false).trigger(
-                        "change"); // Reset form
-
+                        "change");
                     $(".modal-title").html(modalTitle);
-                    $("#modalDetail").appendTo("body").modal("show"); // Show modal
+                    $("#modalDetail").appendTo("body").modal("show");
 
                     let data = getDataRest.data.data;
-
-                    let domHtml = `
-                <tr>
-                  <th>User Input</th>
-
-                </tr>`;
-
-                    $("#tableDetail").html(domHtml);
-                    let processedUserIds = [];
-
-                    let listData = "";
                     console.log(data);
-                    for (let i = 0; i < data.length; i++) {
-                        let element = data[i];
+                    let proccessedUserIds = [];
+                    let listData = ""
+                    for (let index = 0; index < data.length; index++) {
+                        let element = data[index];
+                        listData += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${element.parent_user.name_role?element.parent_user.name_role : '-'}</td>
+                    </tr>
+                    `;
 
-                        // if (!processedUserIds.includes(element.user.id)) {
-                            listData += `
-                            <tr>
-                                <td>${i + 1}.</td>
-                                <td> ${element.parent_user.name_role ? element.parent_user.name_role : '-'}</td>
-                                <td>
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end" data-id="${element.user.id}">
-                                        <button class="btn btn-danger btn-sm delete-data" type="button" title="Hapus">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>`;
-                            processedUserIds.push(element.user.id); // Add processed user ID to the array
-                        // }
+                        proccessedUserIds.push(element.user.id);
                     }
 
-                    $("#tableDetailList tbody").html(listData); // Set list data with unique user IDs
+                    // list table
+                    $("#tableDetailList tbody").html(listData);
                 }
-            });
+
+            })
         }
 
-
-
         async function editData() {
+
             $(document).on("click", ".edit-data", async function() {
-                loadingPage(true)
+                loadingPage(true);
                 modalTitle = "Ubah Data {{ $title }}";
                 isActionForm = "update";
 
-                let id = $(this).parent().attr("data-id")
-                $(".modal-title").html(modalTitle)
+                let id = $(this).attr("data-id");
+                $(".modal-title").html(modalTitle);
 
                 const getDataRest = await CallAPI(
                     'GET',
-                    `{{ route('api.administrator.pengelolaan-grup-pengguna.find') }}`, {
+                    `{{ route('api.administrator.pengelolaan-grup-pengguna.detail') }}`, {
                         id: id
                     }
                 ).then(function(response) {
                     return response;
                 }).catch(function(error) {
-                    loadingPage(false)
+                    loadingPage(false);
                     let resp = error.response;
-                    notificationAlert('info', 'Pemberitahuan', resp.data.message)
+                    notificationAlert('info', 'Pemberitahuan', resp.data.message);
                     return resp;
-                })
+                });
 
-                if (getDataRest.status == 200) {
-                    loadingPage(false)
-                    $("form").find("select").val("").prop("checked", false)
-                        .trigger("change")
-                    $(".modal-title").html(modalTitle)
-                    $("#modalData").modal("show")
+                if (getDataRest.data.status_code == 200) {
+                    loadingPage(false);
+                    $("form").find("select").val("").prop("select,input,checked", false).trigger("change");
+                    $(".modal-title").html(modalTitle);
+                    $("#modalData").modal("show");
 
                     let data = getDataRest.data.data;
+                    let proccedUserId = []
+                    console.log(data);
+                    $('#inputId').val(data.id);
+                    $("#tableEditList tbody").empty();
 
-                    $('#inputId').val(data.id)
-                    // if (authRole == constantRole) {
-                    //     let input_provinsi_id = new Option(data.provinsi.nama, data.provinsi.id, true, true);
-                    //     $("#input_provinsi_id").append(input_provinsi_id).trigger('change');
-                    //     let input_kota_id = new Option(data.kota.nama, data.kota.id, true, true);
-                    //     $("#input_kota_id").append(input_kota_id).trigger('change');
-                    // } else {
-                    //     $('#input_provinsi_id').val(data.provinsi_id)
-                    //     $('#input_kota_id').val(data.kota_id)
-                    // }
+                    data.forEach((editData, index) => {
+                        console.log(editData);
+                        let row = `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${editData.parent_user.name_role}</td>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-danger btn-sm remove-parent-user">Remove</button>
+                            </td>
+                        </tr>
+                    `;
+                        $("#tableEditList tbody").append(row);
+                    });
 
 
                     // let input_user_id = new Option(data.user.name_role, data.user.id, true, true);
-
                     // $("#input_user_id").append(input_user_id).trigger('change');
-                    // let input_parent_user_id = new Option(data.parent_user.nama_role, data.parent_user.id,
-                    //     true, true);
+                    // let input_parent_user_id = new Option(data.parent_user.name_role, data.parent_user.id, true, true);
                     // $("#input_parent_user_id").append(input_parent_user_id).trigger('change');
-                    // let input_trayek_id = new Option(data.trayek.nama, data.trayek.id, true, true);
-                    // $("#input_trayek_id").append(input_trayek_id).trigger('change');
-                    // let input_rute_trayek_id = new Option(data.rute_trayek.nama, data.rute_trayek.id, true, true);
-                    // $("#input_rute_trayek_id").append(input_rute_trayek_id).trigger('change');
-                    // let input_jenis_layanan_id = new Option(data.jenis_layanan.nama, data.jenis_layanan.id, true, true);
-                    // $("#input_jenis_layanan_id").append(input_jenis_layanan_id).trigger('change');
-                    // let input_kendaraan_id = new Option(data.kendaraan.nomor_kendaraan, data.kendaraan.id, true, true);
-                    // $("#input_kendaraan_id").append(input_kendaraan_id).trigger('change');
+
+                    // for (let i = 0; i < data.length; i++) {
+                    //     let editData = data[i];
+                    //     console.log(editData);
+                    //     let row = `
+                //             <tr>
+                //                 <td>${i + 1}</td>
+                //                 <td>${editData.user.name_role}</td>
+                //                 <td class="text-end">
+                //                     <button type="button" class="btn btn-danger btn-sm remove-parent-user">Remove</button>
+                //                 </td>
+                //             </tr>
+                //         `;
+                    //         $("#tableEditList tbody").append(row);
+                    // }
+
+                    // Show parent user section for update
+                    $("#parent_user_section").show();
+                    $("#parent_user_table_wrapper").show();
+
+                    $("#tableDetailList tbody").empty();
 
 
-                    // $("#input_masa_berlaku_kps").val(data.masa_berlaku_kps)
-                    // $("#input_masa_berlaku_uji_berkala").val(data.masa_berlaku_uji_berkala)
-                    // $("#input_nomor_uji_berkala").val(data.nomor_uji_berkala)
-                    // $("#input_nomor_srut").val(data.nomor_srut)
-                    // $("#input_nomor_kartu_pengawas_kps").val(data.nomor_kartu_pengawas_kps)
 
+
+                    proccedUserId.push(element.parent_user.id)
                 }
-            })
+            });
+
+            $(document).on("click", "#create-data", function() {
+                isActionForm = "create";
+                modalTitle = "Tambah Data {{ $title }}";
+                $(".modal-title").html(modalTitle);
+                $("#modalData").modal("show");
+
+                // Clear form fields
+                $("form").trigger("reset");
+                $("#input_user_id").val("").trigger('change');
+                $("#parent_user_section").hide();
+                $("#parent_user_table_wrapper").hide();
+            });
         }
+
+        function addParentUserRow(id, role) {
+            let row = `
+                <tr data-id="${id}">
+                    <td>${role}</td>
+                    <td><button type="button" class="btn btn-danger btn-sm remove-parent-user">Remove</button></td>
+                </tr>
+                `;
+            $("#parent_user_table tbody").append(row);
+        }
+
+        $(document).on("click", "#add_parent_user", function() {
+            let role = $("#parent_user_role").val().trim();
+
+            if (role) {
+                let id = Date.now(); // Using timestamp as a unique ID for new entries
+                addParentUserRow(id, role);
+                $("#parent_user_role").val(""); // Clear the input field
+            }
+        });
+
+        $(document).on("click", ".remove-parent-user", function() {
+            $(this).closest("tr").remove();
+        });
+
         async function deleteData() {
             $(document).on("click", ".delete-data", async function() {
                 isActionForm = "delete";
-                let id = $(this).parent().attr("data-id")
+                let id = $(this).attr("data-id")
                 swal.fire({
                     title: "Pemberitahuan",
                     text: "Anda tidak akan dapat mengembalikannya!",
@@ -501,7 +488,8 @@
                             loadingPage(false)
                             await initDataOnTable(defaultLimitPage, currentPage,
                                 defaultAscending, defaultSearch)
-                            notificationAlert('success', 'Pemberitahuan', postDataRest.data
+                            notificationAlert('success', 'Pemberitahuan', postDataRest
+                                .data
                                 .message)
                         }
                     } else {
@@ -513,37 +501,82 @@
 
         async function submitData() {
             $(document).on("submit", "#form-data", async function(e) {
-                console.log('test submit')
-                e.preventDefault()
-                loadingPage(true)
-                const data = {}
-                let method = "POST"
-                let url = `{{ route('api.administrator.pengelolaan-grup-pengguna.create') }}`
+                e.preventDefault();
+                loadingPage(true);
+                const data = {};
+                let method = "POST";
+                let url = `{{ route('api.administrator.pengelolaan-grup-pengguna.create') }}`;
                 if (isActionForm == "update") {
-                    url = `{{ route('api.administrator.pengelolaan-grup-pengguna.update') }}`
-                    data["id"] = $("#inputId").val()
-                    method = "PUT"
+                    url = `{{ route('api.administrator.pengelolaan-grup-pengguna.update') }}`;
+                    data["id"] = $("#inputId").val();
+                    method = "PUT";
+
+                    // Collect parent user data from table for update
+                    let parentUsers = [];
+                    $("#parent_user_table tbody tr").each(function() {
+                        parentUsers.push($(this).data("id"));
+                    });
+                    data["parent_user_id"] = parentUsers;
                 }
-                data["user_id"] = $("#input_user_id").val()
+                data["user_id"] = $("#input_user_id").val();
                 data["parent_user_id"] = $("#input_parent_user_id").val()
 
                 const postDataRest = await CallAPI(method, url, data).then(function(response) {
-                    return response
+                    return response;
                 }).catch(function(error) {
-                    loadingPage(false)
-                    let resp = error.response
-                    notificationAlert('info', 'Pemberitahuan', resp.data.message)
-                    return resp
-                })
+                    loadingPage(false);
+                    let resp = error.response;
+                    notificationAlert('info', 'Pemberitahuan', resp.data.message);
+                    return resp;
+                });
 
                 if (postDataRest.status == 200) {
-                    loadingPage(false)
-                    await initDataOnTable(defaultLimitPage, currentPage, defaultAscending, defaultSearch)
-                    notificationAlert('success', 'Pemberitahuan', postDataRest.data.message)
-                    $(this).trigger("reset")
-                    $("#modalData").modal("hide")
+                    loadingPage(false);
+                    await initDataOnTable(defaultLimitPage, currentPage, defaultAscending,
+                        defaultSearch);
+                    notificationAlert('success', 'Pemberitahuan', postDataRest.data.message);
+                    $(this).trigger("reset");
+                    $("#modalData").modal("hide");
                 }
-            })
+            });
+        }
+        async function showSelectListProvinsi(id, isUrl) {
+            await $(`${id}`).select2({
+                language: languageIndonesian,
+                dropdownParent: $('#modalData'),
+                ajax: {
+                    url: isUrl,
+                    dataType: 'json',
+                    delay: 500,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: function(params) {
+                        let query = {
+                            search: params.term,
+                            page: 1,
+                            limit: 30,
+                            ascending: 1,
+
+                        };
+                        return query;
+                    },
+                    processResults: function(res) {
+                        let data = res.data;
+                        let filteredData = $.map(data, function(item) {
+                            return {
+                                text: item.nama,
+                                id: item.id
+                            };
+                        });
+                        return {
+                            results: filteredData
+                        };
+                    },
+                },
+                allowClear: true,
+                placeholder: 'Pilih Provinsi'
+            });
         }
 
         async function showSelectList(id, isUrl) {
@@ -585,13 +618,13 @@
         async function initPageLoad() {
 
             await Promise.all([
-                await initDataOnTable(defaultLimitPage, currentPage, defaultAscending, defaultSearch),
-                await manipulationDataOnTable(),
-                await addData(),
-                await detailData(),
-                await editData(),
-                await deleteData(),
-                await submitData(),
+                initDataOnTable(defaultLimitPage, currentPage, defaultAscending, defaultSearch),
+                manipulationDataOnTable(),
+                addData(),
+                detailData(),
+                editData(),
+                deleteData(),
+                submitData(),
 
             ])
             showSelectList('#input_user_id', userManagementListRoute)

@@ -20,6 +20,12 @@ class UserGroupController extends CrudController
     public function runValidationShow($request)
     {
         return  Validator::make($request->all(), [
+            'id' => 'required|exists:group_users,id,deleted_at,NULL'
+        ]);
+    }
+
+    public function runValidationShowList($request){
+        return Validator::make($request->all(), [
             'id' => 'required|exists:users,id,deleted_at,NULL'
         ]);
     }
@@ -47,5 +53,6 @@ class UserGroupController extends CrudController
             'id' => 'required|exists:group_users,id,deleted_at,NULL'
         ]);
     }
+
 
 }

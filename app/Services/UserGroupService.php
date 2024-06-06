@@ -46,16 +46,14 @@ class UserGroupService
         return ['data' => $data->toArray()['data'], 'meta' => $meta];
     }
 
-    // public function getDetailByID($id)
-    // {
-    //     return $this->getModel()->where('id', $id)->first();
-    // }
-
     public function getDetailByID($id)
     {
-        return $this->getModel()->where('user_id', $id)->get();
+        return $this->getModel()->where('id', $id)->first();
     }
 
+    public function getDetailList($id){
+        return $this->getModel()->where('user_id', $id)->get();
+    }
     public function store($request)
     {
         $data = $this->setContent($request);

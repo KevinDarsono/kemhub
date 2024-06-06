@@ -152,6 +152,7 @@ Route::group(['prefix' => 'pengelolaan-grup-pengguna'], function () {
         Route::post('/create', 'store')->name('pengelolaan-grup-pengguna.create');
         Route::put('/update', 'update')->name('pengelolaan-grup-pengguna.update');
         Route::delete('/delete', 'destroy')->name('pengelolaan-grup-pengguna.destroy');
+        Route::get('/showDetail', 'showDetail')->name('pengelolaan-grup-pengguna.detail');
     });
 });
 
