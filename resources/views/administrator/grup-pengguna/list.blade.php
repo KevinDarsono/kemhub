@@ -88,22 +88,33 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label for="input_user_id" class="form-label">Pemimpin Grup <span class="text-danger">*</span></label>
+                                    <label for="input_user_id" class="form-label">Pemimpin Grup <span
+                                            class="text-danger">*</span></label>
                                     <select class="form-select" name="id" id="input_user_id"></select>
                                 </div>
                             </div>
                             <div class="col-md-10">
                                 <div class="mb-3">
-                                    <label for="input_parent_user_id" class="form-label">Anggota Grup <span class="text-danger">*</span></label>
+                                    <label for="input_parent_user_id" class="form-label">Anggota Grup <span
+                                            class="text-danger">*</span></label>
                                     <select class="form-select" name="parent_user_id[]" id="input_parent_user_id"></select>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="mt-4 d-grid">
-                                    <button type="button" class="btn btn-success btn-md add-approver" id="parent-user-"><i class="fa fa-plus"></i></button>
+                                    <button type="button" class="btn btn-success btn-md add-approver" id="parent-user-">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="table-responsive mt-4" id="table-card" style="display: none">
+                            <table class="table table-hover table-striped">
+                                <tbody id="approver-list"></tbody>
+                            </table>
+                        </div>
+
                         <div class="table-responsive mt-4" id="tableEdit">
                             <table class="table table-hover table-striped" id="tableEditList">
                                 <thead>
@@ -137,7 +148,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="table-responsive">
-                        <table class="table table-hover table-striped"  style="width: 100%" id="tableDetailList">
+                        <table class="table table-hover table-striped" style="width: 100%" id="tableDetailList">
                             <thead>
                                 <tr class="tb-head ">
                                     <th>No</th>
@@ -165,7 +176,6 @@
 
 
 @section('page_js')
-
     <script>
         let modalTitle = "";
         let isActionForm = "create";
@@ -175,6 +185,30 @@
         let defaultAscending = 0;
         let defaultSearch = '';
         let userManagementListRoute = `{{ route('api.administrator.user-management.list') }}`;
+
+        $('.add-approver').on('click', function() {
+            var selectedValue = $('#input_parent_user_id').val();
+            var selectedText = $('#input_parent_user_id option:selected').text();
+            if (selectedValue && selectedValue.length > 0) {
+                $('#table-card').css('display', 'block');
+                // Add new row to tbody
+                var newRow = `<tr data-id="${selectedValue}">
+                                <td>${selectedValue}</td>
+                                <td>${selectedText}</td>
+                                <td><button type="button" class="btn btn-danger btn-sm remove-approver">Remove</button></td>
+                              </tr>`;
+                $('#approver-list').append(newRow);
+
+                $('#input_parent_user_id').val(null).trigger('change');
+            } else {
+                alert('Please select an option from the Anggota Grup dropdown first.');
+            }
+        });
+
+        // Event delegation to handle dynamically added rows
+        $('#approver-list').on('click', '.remove-approver', function() {
+            $(this).closest('tr').remove();
+        });
 
         async function getListData(limit = 10, page = 1, ascending = 0, search = '') {
             loadingPage(true);
@@ -458,6 +492,13 @@
                 }
                 data["user_id"] = $("#input_user_id").val();
                 data["parent_user_id"] = $("#input_parent_user_id").val();
+
+                let parentUsers = [];
+                $("#approver-list tr").each(function() {
+                    console.log($(this).data("id"));
+                    parentUsers.push($(this).data("id"));
+                });
+                data["parent_user_id"] = parentUsers;
 
                 const postDataRest = await CallAPI(method, url, data).then(function(response) {
                     return response;
